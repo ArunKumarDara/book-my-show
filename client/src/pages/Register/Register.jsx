@@ -1,14 +1,30 @@
-import { Form, Divider } from "antd";
-import { Link } from "react-router-dom";
+import { Form, message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
+import { registerUser } from "../../APICalls/user";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const onFinish = async (values) => {
+    try {
+      const response = await registerUser(values);
+      if (response.success) {
+        message.success(response.message);
+        navigate("/login");
+      } else {
+        message.error(response.message);
+      }
+    } catch (error) {
+      message.error(error.message);
+    }
+  };
+
   return (
     <div className="flex justify-center h-screen items-center bg-main">
       <div className="p-3 w-96 card">
         <h1 className="text-xl mb-1">Welcome! Please Register</h1>
-        <Divider />
-        <Form layout="vertical" className="mt-1">
+        <hr />
+        <Form layout="vertical" className="mt-1" onFinish={onFinish}>
           <Form.Item
             label="Name"
             name="name"
