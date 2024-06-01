@@ -6,9 +6,9 @@ const axiosInstance = axios.create({
   headers: {
     credentials: "include",
     "Content-Type": "application/json",
-    //   Authorization: `bearer ${
-    //     localStorage?.getItem("tokenForBookMyShow") || ""
-    //   }`,
+    Authorization: `bearer ${
+      localStorage?.getItem("tokenForBookMyShow") || ""
+    }`,
   },
 });
 
@@ -30,5 +30,14 @@ export const loginUser = async (payload) => {
     return response.data;
   } catch (error) {
     return error;
+  }
+};
+
+export const GetCurrentUser = async () => {
+  try {
+    const response = await axiosInstance.get("/app/v1/users/getCurrentUser");
+    return response?.data;
+  } catch (err) {
+    return err?.response?.data || err;
   }
 };
