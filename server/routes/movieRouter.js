@@ -8,7 +8,7 @@ const {
 
 movieRouter.post("/addMovie", addMovie);
 movieRouter.get("/getAllMovies", getAllMovies);
-movieRouter.patch("/updateMovies", updateMovie);
-movieRouter.delete("/deleteMovie", deleteMovie);
+movieRouter.patch("/updateMovie", updateMovie);
+movieRouter.post("/deleteMovie", deleteMovie);
 
 module.exports = movieRouter;
