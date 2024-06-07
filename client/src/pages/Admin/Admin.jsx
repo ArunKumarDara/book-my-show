@@ -1,6 +1,7 @@
 import PageTitle from "../../components/PageTitle";
 import { Tabs } from "antd";
 import MoviesList from "./MoviesList";
+import Theatre from "./Theatre";
 
 const Admin = () => {
   return (
@@ -11,7 +12,7 @@ const Admin = () => {
           <MoviesList />
         </Tabs.TabPane>
         <Tabs.TabPane key="2" tab="Theatres">
-          Theatres
+          <Theatre />
         </Tabs.TabPane>
       </Tabs>
     </div>

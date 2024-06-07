@@ -5,10 +5,11 @@ const {
   deleteMovie,
   updateMovie,
 } = require("../controller/movieController");
+const validateJwtToken = require("../middlewares/authMiddleware");
 
-movieRouter.post("/addMovie", addMovie);
-movieRouter.get("/getAllMovies", getAllMovies);
-movieRouter.patch("/updateMovie", updateMovie);
-movieRouter.post("/deleteMovie", deleteMovie);
+movieRouter.post("/addMovie", validateJwtToken, addMovie);
+movieRouter.get("/getAllMovies", validateJwtToken, getAllMovies);
+movieRouter.patch("/updateMovie", validateJwtToken, updateMovie);
+movieRouter.post("/deleteMovie", validateJwtToken, deleteMovie);
 
 module.exports = movieRouter;

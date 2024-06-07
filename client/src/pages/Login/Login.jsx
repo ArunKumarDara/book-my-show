@@ -10,7 +10,8 @@ const Login = () => {
       const response = await loginUser(values);
       if (response.success) {
         message.success(response.message);
-        navigate("/home");
+        localStorage.setItem("tokenForBookMyShow", response.data);
+        navigate("/");
       } else {
         message.error(response.message);
       }
@@ -20,7 +21,7 @@ const Login = () => {
   };
   return (
     <div className="flex justify-center h-screen items-center bg-main">
-      <div className="card p-3 w-400">
+      <div className="card p-3 w-400 shadow-lg">
         <h1 className="text-xl mb-1">Welcome Again! Please login</h1>
         <hr />
         <Form layout="vertical" className="mt-1" onFinish={onFinish}>
